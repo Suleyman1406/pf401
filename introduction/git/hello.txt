@@ -1,3 +1,0 @@
-1. Github hesabi yaradirsiniz.
-2. Localda yaratdiginiz bir projecti oz email ve username ile commitleyin.
-3. Bu proyekti githubdaki repository'e gonderin
