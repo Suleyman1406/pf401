@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
+/* div p {
+  color: rgba(163, 111, 193, 0.6);
+}
+
+div {
+   background-color: rgb(222, 222, 222, 0.7); 
+}
+*/
+/* .square {
+  width: 50px;
+  height: 50px;
+  background-color: blueviolet;
+  border: red solid 1px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: aqua;
+  border-radius: 50px;
+
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 10px;
+}  */
+.box-model {
+  /* width: 300px;
+  border: 2px solid chocolate; */
+  /* padding: 40px; */
+  /* padding-top: 20px;
+  padding-left: 10px;
+  padding-bottom: 30px;
+  padding-right: 40px; */
+
+  /* padding: 0 20px; */
+  /* padding-right: 20px;
+  padding-left: 20px; */
+  /* margin-bottom: 30px; */
+
+  /* margin: 10px 20px 30px 40px; */
+}
+
+/* .display {
+  width: 300px;
+  background-color: red;
+  border: 2px solid yellow;
+  display: block;
+} */
+
+/* a {
+  width: 300px;
+  height: 300px;
+  background-color: aquamarine;
+} */
+
+/* div {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background-color: red;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .box-model {
+  width: 80px;
+  height: 80px;
+  padding: 10px;
+  border: 5px solid gray;
+  background-color: red;
+
+  opacity: 0.2;
+} */
+
+/* p {
+  text-align: center;
+}
+
+a {
+  text-align: center;
+} */
+
+/* div {
+  text-align: center;
+}
+p {
+  width: 500px;
+  height: 20px;
+  background-color: red;
+} */
+
+p {
+  /* text-transform: capitalize; */
+  /* text-decoration: line-through;
+  text-decoration-style: solid;
+  margin-top: 10px; */
+  /* text-indent: 70px; */
+  /* letter-spacing: -1px; */
+  /* word-spacing: 40px; */
+  /* line-height: 80px; */
+  /* font-size: 30900px; */
+  /* font-weight: 900; */
+}
+
+/* html {
+  font-family: "Roboto";
+} */
+
+/* ul {
+  margin-left: 40px;
+  list-style-type: disc;
+} */
+/* 
+.parent {
+  width: 300px;
+  height: 40px;
+  background-color: burlywood;
+}
+.child {
+  width: 80%;
+  height: 40px;
+  background-color: red;
+} */
+
+/* .parent { */
+/* width: 70%;
+  max-width: 400px;
+  min-width: 300px;
+  height: 40px;
+  background-color: red; */
+/* } */
+
+img {
+  /* width: 160px;
+  height: 200px;
+  border: 1px solid red; */
+  /* object-fit: cover; */
+  /* object-position: left; */
+}
+/* 
+.circle {
+  display: inline-block;
+  padding: 60px;
+  border-radius: 50%;
+  border: 3px solid black;
+  margin-left: -30px;
+}
+
+.c1 {
+  margin-left: 0;
+  border-color: red;
+}
+.c2 {
+  border-color: green;
+}
+.c3 {
+  border-color: blue;
+}
+.c4 {
+  border-color: black;
+}
+.c5 {
+  border-color: purple;
+} */
