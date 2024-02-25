@@ -1,0 +1,79 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* .container {
+  position: relative;
+  width: 600px;
+  height: 400px;
+  border: 2px solid pink;
+}
+
+.square {
+  width: 50px;
+  height: 50px;
+  background-color: red;
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+} */
+
+/* .container {
+  padding: 50px;
+}
+
+.input-container {
+  width: 300px;
+  position: relative;
+}
+
+input {
+  width: 100%;
+  border: 2px solid orange;
+  border-radius: 3px;
+  padding: 8px 12px 8px 24px;
+}
+
+i {
+  position: absolute;
+  left: 5px;
+  top: 9px;
+} */
+
+/* .help-open-container {
+  padding: 10px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: black;
+  cursor: pointer;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+i {
+  color: white;
+} */
+
+.navbar {
+  width: 100%;
+  padding: 10px 20px;
+  background-color: chartreuse;
+}
+
+.info-bar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: pink;
+}
+
+h1 {
+  display: inline-block;
+}
+
+.content {
+  /* margin-top: 60px; */
+}
