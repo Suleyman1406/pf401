@@ -1,0 +1,79 @@
+/* button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  background-color: palevioletred;
+  border: 1px solid purple;
+  color: white;
+  text-transform: uppercase;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+
+button:hover {
+  background-color: green;
+}
+button:active {
+  transform: translateY(1.5px);
+}
+
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  background-color: palevioletred;
+} */
+
+/* input {
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid teal;
+  outline: none;
+  transition: 0.3s;
+}
+
+input:hover {
+  background-color: rgba(222, 222, 222, 0.4);
+}
+
+input:focus {
+  padding-left: 12px;
+  padding-right: 12px;
+  border: 2px solid green;
+} */
+/* 
+ul {
+  list-style: none;
+}
+
+ul li {
+  padding: 10px;
+  margin: 5px;
+} */
+/* 
+ul span:last-child {
+  background-color: gray;
+} */
+
+/* ul li:nth-child(2n + 1) {
+  background-color: rebeccapurple;
+} */
+
+/* p::first-letter {
+  font-size: 40px;
+} */
+/* p:first-line {
+  font-size: 40px;
+} */
+/* 
+p::selection {
+  background-color: red;
+  color: white;
+}
+
+input {
+  color: red;
+}
+
+input::placeholder {
+  color: yellow;
+} */
