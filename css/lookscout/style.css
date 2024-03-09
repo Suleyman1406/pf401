@@ -87,6 +87,38 @@ html {
   color: #437ef7;
   border-color: #437ef7;
 }
+.navbar-container .burger-menu-button {
+  display: none;
+}
+
+@media screen and (max-width: 1280px) {
+  .container {
+    width: 672px;
+    padding: 0;
+  }
+  .navbar-container {
+    padding: 16px 0;
+  }
+  .navbar-container .left-side .navigation-links {
+    display: none;
+  }
+  .navbar-container .right-side {
+    display: none;
+  }
+  .navbar-container .burger-menu-button {
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    border: none;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .container {
+    width: 375px;
+    padding: 0 16px;
+  }
+}
 
 .landing-section {
   background-color: #f8f9fb;
@@ -111,6 +143,7 @@ html {
   line-height: 60px; /* 115.385% */
   letter-spacing: -0.52px;
 }
+
 .landing-section .landing-container .left-side ul {
   list-style-type: none;
   margin-top: 32px;
@@ -235,6 +268,85 @@ html {
   top: 0;
 }
 
+@media screen and (max-width: 1280px) {
+  .landing-section .landing-container {
+    flex-direction: column-reverse;
+    row-gap: 40px;
+  }
+  .landing-section .landing-container .left-side {
+    align-self: start;
+  }
+  .landing-section {
+    padding: 48px 0;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .landing-section .landing-container .left-side {
+    width: 100%;
+  }
+  .landing-section .landing-container .left-side h1 {
+    font-size: 36px;
+    font-weight: 600;
+    line-height: 44px; /* 122.222% */
+    letter-spacing: -0.72px;
+  }
+  .landing-section .landing-container .left-side .input-container {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+  .landing-section .landing-container .left-side .input-container input {
+    width: 100%;
+    border-radius: 6px;
+  }
+  .landing-section .landing-container .left-side .input-container button {
+    border-radius: 6px;
+  }
+  .landing-section .landing-container .right-side {
+    width: 343px;
+    height: 343px;
+    padding: 19.6px;
+    gap: 6.12px;
+  }
+  .landing-section .landing-container .right-side .card {
+    width: 148px;
+    height: 148px;
+  }
+  .landing-section .landing-container .right-side .card img {
+    width: 32px;
+    height: 32px;
+  }
+  .landing-section .landing-container .right-side .card h5 {
+    font-size: 15.925px;
+    line-height: 19.93px; /* 125.151% */
+    letter-spacing: -0.159px;
+    margin-top: 14px;
+    margin-bottom: 5px;
+  }
+  .landing-section .landing-container .right-side .card p {
+    font-size: 12px;
+    line-height: 15px; /* 125% */
+    letter-spacing: -0.061px;
+  }
+  .landing-section .landing-container .right-side img.dots {
+    width: 145.775px;
+    height: 63.088px;
+  }
+  .landing-section .landing-container .right-side img.heart {
+    width: 40.172px;
+    height: 40.992px;
+  }
+  .landing-section .landing-container .right-side img.wave {
+    width: 45.937px;
+    height: 42.875px;
+    right: 4;
+    bottom: 2;
+  }
+  .landing-section {
+    padding: 32px 0 40px;
+  }
+}
+
 .info-section {
   padding: 64px 0;
 }
@@ -272,6 +384,24 @@ html {
 .info-section .container {
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 1280px) {
+  .info-section {
+    padding: 40px 0;
+  }
+  .info-section .item {
+    width: 336px;
+  }
+  .info-section .container {
+    flex-wrap: wrap;
+    row-gap: 32px;
+  }
+}
+@media screen and (max-width: 680px) {
+  info-section {
+    padding: 32px 0;
+  }
 }
 
 .customers-section {
@@ -372,4 +502,33 @@ html {
   display: flex;
   flex-wrap: wrap;
   gap: 32px;
+}
+
+@media screen and (max-width: 1280px) {
+  .customers-section {
+    padding: 40px 0;
+  }
+  .customers-section .container header {
+    width: 100%;
+  }
+  .customers-section .container .cart-container {
+    padding: 40px 0;
+    gap: 24px;
+  }
+  .customers-section .container .cart-container .cart {
+    width: 324px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+  .customers-section {
+    padding: 32px 0;
+  }
+  .customers-section .container .cart-container {
+    padding: 32px 0;
+    gap: 16px;
+  }
+  .customers-section .container .cart-container .cart {
+    width: 100%;
+  }
 }
