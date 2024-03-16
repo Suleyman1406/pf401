@@ -11,6 +11,10 @@
   /* box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px; */
   /* clip-path: polygon(25% 0%, 100% 0%, 100% 100%, 25% 100%, 93% 50%); */
 }
+/* div {
+  background-size: cover;
+  object-position: ;
+} */
 .square {
   /* width: 300px;
   height: 300px; */
@@ -60,7 +64,7 @@ span {
   box-sizing: border-box;
 }
 
-body {
+/* body {
   padding: 50px;
 }
 .class {
@@ -99,4 +103,53 @@ body {
 .class .class-header button img {
   width: 14px;
   height: 14px;
+}
+ */
+
+/* p {
+  font-size: 20px;
+} */
+
+/* div a {
+  color: red;
+} */
+
+/* html {
+  font-size: 16px;
+}
+
+p {
+  font-size: 0.5rem;
+}
+
+@media screen and (max-width: 768px) {
+  html {
+    font-size: 10px;
+  }
+} */
+
+html {
+  font-size: 16px;
+}
+
+div {
+  font-size: 24px;
+}
+
+p {
+  font-size: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  p {
+    font-size: 1em;
+  }
+}
+
+div {
+  background: linear-gradient(
+    180deg,
+    rgba(254, 65, 0, 1) 56%,
+    rgba(49, 0, 255, 1) 98%
+  );
 }
