@@ -1,0 +1,182 @@
+@font-face {
+  font-family: "Integral CF";
+  src: url(./assets/fonts/integral-cf/bold.otf) format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url(./assets/fonts/satoshi/light.otf) format("opentype");
+  font-weight: 200;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url(./assets/fonts/satoshi/regular.otf) format("opentype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url(./assets/fonts/satoshi/medium.otf) format("opentype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url(./assets/fonts/satoshi/bold.otf) format("opentype");
+  font-weight: 700;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  font-family: "Satoshi";
+}
+
+h1 {
+  font-family: "Integral CF";
+}
+
+.container {
+  width: 1240px;
+  margin: auto;
+}
+
+@media screen and (max-width: 1244px) {
+  .container {
+    width: 100%;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+#sign_up-header {
+  background-color: black;
+  text-align: center;
+  padding: 9px 0;
+}
+#sign_up-header .container {
+  position: relative;
+}
+
+#sign_up-header p {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+}
+#sign_up-header p a {
+  color: #fff;
+  font-weight: 500;
+}
+
+#sign_up-header .close-btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+  transition: 0.2s;
+}
+#sign_up-header .close-btn:hover {
+  transform: scale(1.1);
+}
+
+@media screen and (max-width: 1244px) {
+  .close-btn {
+    display: none;
+  }
+}
+
+.navbar {
+  margin-top: 24px;
+  padding-bottom: 24px;
+}
+.navbar .container {
+  height: 48px;
+  background-color: rgba(128, 128, 128, 0.574);
+}
+.navbar .line {
+  margin-top: 24px;
+  height: 1px;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.breadcrumbs .container .wrapper {
+  width: 200px;
+  background-color: rgba(128, 128, 128, 0.574);
+  height: 22px;
+}
+
+.product_detail-wrapper {
+  margin-top: 36px;
+}
+.product_detail-wrapper .container {
+  display: flex;
+  column-gap: 20px;
+}
+.product_detail-wrapper .container .left {
+  width: 100%;
+  height: 530px;
+  position: sticky;
+  top: 20px;
+  display: grid;
+  grid-template-columns: 152px 444px;
+  grid-template-rows: repeat(3, 167px);
+  gap: 14px;
+}
+.product_detail-wrapper .container .left img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 20px;
+  transition: 0.3s;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.product_detail-wrapper .container .left img.active {
+  border-color: #000;
+}
+.product_detail-wrapper .container .left img:hover {
+  border-color: #a4a4a4;
+}
+
+.product_detail-wrapper .container .left img.main {
+  grid-row: 1/4;
+  grid-column-start: 2;
+  border-color: transparent;
+}
+
+.product_detail-wrapper .container .right {
+  width: 100%;
+  background-color: blue;
+}
+
+@media screen and (max-width: 1244px) {
+  .product_detail-wrapper .container .left {
+    width: 100%;
+    height: fit-content;
+    max-width: 610px;
+    position: initial;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 290px 106px;
+    gap: 12px;
+  }
+
+  .product_detail-wrapper .container .left img.main {
+    grid-row: 1/2;
+    grid-column: 1/4;
+    border-color: transparent;
+  }
+
+  .product_detail-wrapper .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
