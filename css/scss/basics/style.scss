@@ -1,0 +1,221 @@
+// Variables
+// $primary-color: #000;
+// $test: 10px 20px 30px 40px;
+// $primary-700: yellow;
+
+// div {
+//   padding: $test;
+//   background-color: $primary-color;
+//   color: $primary-700;
+// }
+
+// a {
+//   color: $primary-color;
+// }
+
+// Nesting
+// .card {
+//   background-color: red;
+// }
+// .card .header {
+//   font-size: 22px;
+// }
+// .card .header h1 {
+//   margin-right: 10px;
+// }
+
+// .card {
+//   background-color: red;
+
+//   .header {
+//     font-size: 22px;
+
+//     h1 {
+//       margin-right: 10px;
+//     }
+//   }
+// }
+
+// $primary-color: #000;
+
+// .landing-section {
+//   background-color: #f8f9fb;
+//   padding-top: 48px;
+//   padding-bottom: 80px;
+// }
+
+// .landing-section .landing-container {
+//   display: flex;
+//   align-items: center;
+//   justify-content: space-between;
+// }
+
+// .landing-section .landing-container .left-side {
+//   width: 524px;
+// }
+
+// .landing-section .landing-container .left-side h1 {
+//   color: #272d37;
+//   font-size: 52px;
+//   font-weight: 700;
+//   line-height: 60px; /* 115.385% */
+//   letter-spacing: -0.52px;
+// }
+
+// .landing-section .landing-container .left-side ul {
+//   list-style-type: none;
+//   margin-top: 32px;
+//   margin-bottom: 48px;
+//   display: flex;
+//   flex-direction: column;
+//   row-gap: 10px;
+// }
+
+// .landing-section .landing-container  .left-side ul li {
+//   display: flex;
+//   align-items: center;
+//   column-gap: 12px;
+// }
+
+// .landing-section {
+//   background-color: #f8f9fb;
+//   padding-top: 48px;
+//   padding-bottom: 80px;
+//   .landing-container {
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
+
+//     .left-side {
+//       width: 524px;
+//       h1 {
+//         color: #272d37;
+//         font-size: 52px;
+//         font-weight: 700;
+//         line-height: 60px; /* 115.385% */
+//         letter-spacing: -0.52px;
+//       }
+
+//       ul {
+//         list-style-type: none;
+//         margin-top: 32px;
+//         margin-bottom: 48px;
+//         display: flex;
+//         flex-direction: column;
+//         row-gap: 10px;
+
+//         li {
+//           display: flex;
+//           align-items: center;
+//           column-gap: 12px;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .alert {
+//   border: 1px solid $border-dark;
+// }
+
+// Loops
+
+// For
+
+// @for $i from 1 through 10 {
+//   p:nth-child(#{$i}) {
+//     padding-right: calc(10px * $i);
+//   }
+// }
+
+// Mixin
+
+// @mixin center-content() {
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+// div.container {
+//   background-color: red;
+//   @include center-content();
+// }
+// div.wrapper {
+//   background-color: blue;
+//   @include center-content();
+// }
+
+// @mixin size($width, $height) {
+//   width: $width;
+//   height: $height;
+// }
+
+// .square {
+//   @include size(50px, 30px);
+// }
+
+// header div {
+//   @include size(50px, 40px);
+// }
+
+// @mixin font-decorator($family, $weight, $size, $line-height) {
+//   font-family: $family;
+//   font-weight: $weight;
+//   font-size: $size;
+//   line-height: $line-height;
+// }
+
+// .test p {
+//   @include font-decorator("Franklin Gothic Medium", 700, 22px, 28px);
+// }
+// header p {
+//   @include font-decorator("Franklin Gothic Medium", 300, 14px, 14px);
+// }
+
+// @mixin button($bg-color, $padding, $border) {
+//   background-color: $bg-color;
+//   font-size: 22px;
+//   padding: $padding;
+//   border: $border;
+// }
+
+// div button {
+//   @include button(red, 13px 28px, 1px solid brown);
+// }
+
+// div {
+//   font-size: 22px;
+// }
+
+// div > .test {
+//   background-color: red;
+// }
+
+// div {
+//   font-size: 22px;
+//   > .test {
+//     background-color: red;
+//     &:hover {
+//       background-color: blue;
+//     }
+//   }
+// }
+
+// div {
+// margin-left: 10px;
+// margin-right: 10px;
+//   margin: {
+//     left: 10px;
+//     right: 10px;
+//   }
+// }
+
+@mixin size($width, $height, $font-size: 16px) {
+  width: $width;
+  height: $height;
+  font-size: $font-size;
+}
+
+p {
+  @include size(20px, 30px, 50px);
+}
