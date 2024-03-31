@@ -210,12 +210,26 @@
 //   }
 // }
 
-@mixin size($width, $height, $font-size: 16px) {
-  width: $width;
-  height: $height;
-  font-size: $font-size;
-}
+// @mixin size($width, $height, $font-size: 16px) {
+//   width: $width;
+//   height: $height;
+//   font-size: $font-size;
+// }
 
-p {
-  @include size(20px, 30px, 50px);
-}
+// p {
+//   @include size(20px, 30px, 50px);
+// }
+
+// div {
+//   width: calc(10vh + 10px);
+// }
+
+// div {
+//   background-color: $primary-test-color;
+// }
+
+// @import "./test";
+// @import "./variables";
+
+@import "./variables";
+@import "./buttons";
