@@ -93,22 +93,157 @@
 
 // console.log(result);
 
-function findUnique(myArr) {
-  for (let i = 0; i < myArr.length; i++) {
-    let count = 0;
+// function findUnique(myArr) {
+//   for (let i = 0; i < myArr.length; i++) {
+//     let count = 0;
 
-    for (let j = 0; j < myArr.length; j++) {
-      if (myArr[j] === myArr[i]) {
-        count++;
-      }
-    }
+//     for (let j = 0; j < myArr.length; j++) {
+//       if (myArr[j] === myArr[i]) {
+//         count++;
+//       }
+//     }
 
-    if (count === 1) {
-      return myArr[i];
-    }
-  }
-}
+//     if (count === 1) {
+//       return myArr[i];
+//     }
+//   }
+// }
 
-const uniqueValue = findUnique([1, 5, 7, 8, 7, 1, 5]);
+// const uniqueValue = findUnique([1, 5, 7, 8, 7, 1, 5]);
 
-console.log(uniqueValue);
+// console.log(uniqueValue);
+
+// function sayHello() {
+//   return "14" - "12";
+// }
+
+// let res = sayHello();
+
+// console.log(res);
+
+// function sayHello(name = "Ilhan") {
+//   console.log(`Hello ${name}`);
+// }
+
+// sayHello("Hecer");
+
+// Function Declaration
+
+// function sayHello(name) {
+//   console.log(`Hello ${name}`);
+// }
+// sayHello("Murad");
+
+// Function Expression
+
+// let sayHello = function (name) {
+//   console.log(`Hello ${name}`);
+// };
+
+// sayHello("Fuad");
+
+// Arrow Function (Function Expression)
+
+// const sayHello = (name) => {
+//   console.log(`Hello ${name}`);
+// };
+// sayHello("Hikmet");
+
+// Callback
+
+// function getIsEven(a) {
+//   return a % 2 === 0;
+// }
+
+// function printEvenNumbers(arr) {
+//   console.log("Numbers: ");
+//   for (let i = 0; i < arr.length; i++) {
+//     if (getIsEven(arr[i])) {
+//       console.log(arr[i]);
+//     }
+//   }
+// }
+
+// printEvenNumbers([1, 4, 2, 9, 7, 3, 8]);
+
+// function getIsOdd(a) {
+//   return a % 2 === 1;
+// }
+
+// function printOddNumbers(arr) {
+//   console.log("Numbers: ");
+//   for (let i = 0; i < arr.length; i++) {
+//     if (getIsOdd(arr[i])) {
+//       console.log(arr[i]);
+//     }
+//   }
+// }
+
+// printOddNumbers([1, 4, 2, 9, 7, 3, 8, 15, 30, 75]);
+
+// function getWithCondition(a) {
+//   return a % 15 === 0;
+// }
+
+// function printNumbers(arr) {
+//   console.log("Numbers: ");
+//   for (let i = 0; i < arr.length; i++) {
+//     if (getWithCondition(arr[i])) {
+//       console.log(arr[i]);
+//     }
+//   }
+// }
+
+// printNumbers([1, 4, 2, 9, 7, 3, 8, 15, 30, 75]);
+
+// function getIsEven(a) {
+//   return a % 2 === 0;
+// }
+
+// function getIsOdd(a) {
+//   return a % 2 === 1;
+// }
+
+// function getWithCondition(a) {
+//   return a % 15 === 0;
+// }
+
+// function getWithCondition2(a) {
+//   return a % 19 === 0;
+// }
+
+// function printNumbers(arr, callbackFunc) {
+//   console.log("Numbers: ");
+//   for (let i = 0; i < arr.length; i++) {
+//     if (callbackFunc(arr[i])) {
+//       console.log(arr[i]);
+//     }
+//   }
+// }
+
+// printNumbers([1, 4, 2, 9, 7, 3, 8, 15, 30, 75], function (a) {
+//   return a > 5;
+// });
+// printNumbers([1, 4, 2, 9, 7, 3, 8, 15, 30, 75], (a) => {
+//   return a < 5;
+// });
+
+// function print(text) {
+//   console.log("Your text: " + text);
+// }
+// function exportPdf(text) {
+//   console.log("Your pdf: " + text);
+// }
+
+// function getData(operation) {
+//   // operation = print
+//   /*
+
+//   */
+//   let data = "test test test test test";
+//   operation(data);
+// }
+
+// getData((data) => {
+//   console.log("Data: ", data);
+// });
