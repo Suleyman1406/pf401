@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script defer src="./script.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <h1>Add User</h1>
+    <form id="add-user-form">
+      <input name="user-name" type="text" placeholder="User name" />
+      <input name="user-surname" type="text" placeholder="User surname" />
+      <input name="user-age" type="text" placeholder="User age" />
+      <button id="add-user-btn">Add</button>
+    </form>
+    <h1>Users</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Surname</th>
+          <th>Age</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="user-table-body"></tbody>
+    </table>
+    <div class="modal-container">
+      <div class="modal">
+        <button id="close-modal-btn">x</button>
+        <h1>Edit User</h1>
+        <form id="edit-user-form">
+          <input name="user-name" type="text" placeholder="User name" />
+          <input name="user-surname" type="text" placeholder="User surname" />
+          <input name="user-age" type="text" placeholder="User age" />
+          <button id="edit-user-btn">Edit</button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
