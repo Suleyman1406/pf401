@@ -79,3 +79,37 @@
 // setTimeout(() => {
 //   clearTimeout(timeOutId);
 // }, 4000);
+
+// console.log(localStorage);
+// localStorage.setItem("name", "Suleyman");
+// localStorage.setItem("surname", "Dadashow");
+
+// console.log(localStorage.getItem("surname"));
+
+// localStorage.removeItem("name");
+
+// localStorage.setItem("name", 11);
+
+// console.log(typeof localStorage.getItem("name"));
+
+// localStorage.setItem("products", ["alma", "heyva", "nar"]);
+// localStorage.setItem("user", { name: "Suleyman", surname: "Dadashov" });
+
+// let user = {
+//   name: "Suleyman",
+//   surname: "",
+//   age: 11,
+//   isNew: true,
+//   company: null,
+//   university: undefined,
+//   car: {
+//     name: "nese",
+//   },
+//   students: ["Emiraslan", "Ilhan", "Ulvi"],
+// };
+
+// localStorage.setItem("user", JSON.stringify(user));
+
+// let user = localStorage.getItem("user");
+
+// console.log(JSON.parse(user));
