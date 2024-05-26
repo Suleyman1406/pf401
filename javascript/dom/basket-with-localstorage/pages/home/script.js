@@ -1,4 +1,5 @@
 const productContainerElement = document.querySelector(".product-container");
+const cartItemsCountElement = document.querySelector("#cart-item-count");
 
 products.forEach(createProductElement);
 
@@ -22,6 +23,12 @@ function createProductElement(product) {
 
   addToCartBtn.addEventListener("click", () => addToCart(product));
 
+  const detailButton = document.createElement("a");
+  detailButton.textContent = "Detail";
+  detailButton.href = `../product-detail/index.html?id=${product.id}`;
+
+  productFooter.append(priceElement, addToCartBtn, detailButton);
+
   productElement.append(
     productImg,
     productTitle,
@@ -41,7 +48,7 @@ function createProductElement(product) {
 
 // Advanced
 function addToCart(product) {
-  let cart = JSON.parse(localStorage.getItem("cart")) ?? [];
+  let cart = getCart();
 
   const cartItem = cart.find((item) => item.product.id === product.id);
   if (cartItem) {
@@ -51,27 +58,17 @@ function addToCart(product) {
   }
 
   localStorage.setItem("cart", JSON.stringify(cart));
+  countCartItems();
 }
 
-// [
-//   {
-//     id: 1,
-//     title: "Smartphone",
-//     img: "https://www.zdnet.com/a/img/resize/9c4c6a4546bf9e283e63548c45f588360ce02607/2023/10/05/487a7516-8c27-4547-9dd5-e78f40e8d112/google-pixel-8-pro-screen.jpg?auto=webp&fit=crop&height=900&width=1200",
-//     description: "A high-end smartphone with the latest features.",
-//     price: 799.99,
-//   },
-// ];
+function countCartItems() {
+  const cart = getCart();
+  const count = cart.reduce((prev, val) => prev + val.count, 0);
+  cartItemsCountElement.textContent = count;
+}
 
-// [
-//   {
-//     product: {
-//       id: 1,
-//       title: "Smartphone",
-//       img: "https://www.zdnet.com/a/img/resize/9c4c6a4546bf9e283e63548c45f588360ce02607/2023/10/05/487a7516-8c27-4547-9dd5-e78f40e8d112/google-pixel-8-pro-screen.jpg?auto=webp&fit=crop&height=900&width=1200",
-//       description: "A high-end smartphone with the latest features.",
-//       price: 799.99,
-//     },
-//     count: 7
-//   },
-// ];
+function getCart() {
+  return JSON.parse(localStorage.getItem("cart")) ?? [];
+}
+
+countCartItems();

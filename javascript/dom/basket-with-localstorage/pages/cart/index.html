@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>E-Commerse Cart</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        max-width: 1280px;
+        margin: auto;
+        padding: 40px;
+      }
+      .product-container {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+      }
+
+      .product-container .product {
+        width: 100%;
+      }
+
+      .product-container .product img {
+        width: 100%;
+        height: 200px;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Cart</h1>
+    <div class="product-container"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>

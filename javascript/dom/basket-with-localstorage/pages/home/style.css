@@ -24,3 +24,31 @@ body {
   height: 200px;
   object-fit: contain;
 }
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+nav a {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+nav a svg {
+  width: 25px;
+}
+nav a span {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+  top: -10px;
+  right: -10px;
+  display: grid;
+  place-items: center;
+}
