@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <script
+      defer
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script defer src="../../common/constants/index.js"></script>
+    <script defer src="./script.js"></script>
+    <style>
+      table th,
+      table td {
+        padding: 10px;
+      }
+      tbody tr td .status {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background-color: red;
+        border-radius: 50%;
+        border: none;
+      }
+      tbody tr td .status.inStock {
+        background-color: green;
+      }
+      tbody tr td img {
+        width: 100px;
+        height: 60px;
+        object-fit: contain;
+      }
+      .modal-container {
+        width: 100%;
+        min-height: 100vh;
+        background-color: rgba(0, 0, 0, 0.3);
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: none;
+        place-items: center;
+      }
+      .modal-container.open {
+        display: grid;
+      }
+      .modal {
+        width: 400px;
+        padding: 30px 20px;
+        border-radius: 6px;
+        background-color: white;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      }
+      .modal form {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <a href="../create-product/index.html">Create Product</a>
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th>Id</th>
+          <th>Image</th>
+          <th>Name</th>
+          <th>Price</th>
+          <th>Category</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody class="products-table-body"></tbody>
+    </table>
+
+    <div class="modal-container">
+      <div class="modal">
+        <form class="product-edit-form">
+          <input type="text" placeholder="Type name..." class="product-name" />
+          <input
+            type="text"
+            placeholder="Type price..."
+            class="product-price"
+          />
+          <input
+            type="text"
+            placeholder="Type category..."
+            class="product-category"
+          />
+          <input
+            type="text"
+            placeholder="Type image URL..."
+            class="product-img-url"
+          />
+          <div>
+            <input id="product-in-stock" type="checkbox" />
+            <label for="product-in-stock">In Stock</label>
+          </div>
+          <button>
+            <!-- <span class="loader"></span> -->
+            Edit
+          </button>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
