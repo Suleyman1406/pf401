@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <title>Create Product</title>
+    <style>
+      .product-create-form {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        row-gap: 20px;
+      }
+      button.loading .loader {
+        display: inline-block;
+      }
+
+      .loader {
+        display: none;
+        width: 12px;
+        height: 12px;
+        border: 2px solid #45b6ac;
+        border-bottom-color: transparent;
+        border-radius: 50%;
+        box-sizing: border-box;
+        animation: rotation 1s linear infinite;
+      }
+
+      @keyframes rotation {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
+      button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+      }
+    </style>
+    <script
+      defer
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <script defer src="../../common/constants/index.js"></script>
+    <script defer src="./script.js"></script>
+  </head>
+  <body>
+    <a href="../home/index.html">Home</a>
+
+    <h1>Create Product</h1>
+
+    <form class="product-create-form">
+      <input type="text" placeholder="Type name..." class="product-name" />
+      <input type="text" placeholder="Type price..." class="product-price" />
+      <input
+        type="text"
+        placeholder="Type category..."
+        class="product-category"
+      />
+      <input
+        type="text"
+        placeholder="Type image URL..."
+        class="product-img-url"
+      />
+      <div>
+        <input id="product-in-stock" type="checkbox" />
+        <label for="product-in-stock">In Stock</label>
+      </div>
+      <button>
+        <span class="loader"></span>
+        Create
+      </button>
+    </form>
+  </body>
+</html>
