@@ -4,44 +4,18 @@ import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/re
 import { XMarkIcon } from '@heroicons/react/24/outline';
 
 import { SafeCart } from '@/types';
+import { removeFromCart } from '@/actions/cart';
+import { createCheckoutSession } from '@/actions/checkout';
 import { useCartModal } from '@/hooks/use-cart-modal';
-
-const products = [
-  {
-    id: 1,
-    name: 'Throwback Hip Bag',
-    href: '#',
-    color: 'Salmon',
-    price: '$90.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-01.jpg',
-    imageAlt: 'Salmon orange fabric pouch with match zipper, gray zipper pull, and adjustable hip belt.',
-  },
-  {
-    id: 2,
-    name: 'Medium Stuff Satchel',
-    href: '#',
-    color: 'Blue',
-    price: '$32.00',
-    quantity: 1,
-    imageSrc: 'https://tailwindui.com/img/ecommerce-images/shopping-cart-page-04-product-02.jpg',
-    imageAlt:
-      'Front of satchel with blue canvas body, black straps and handle, drawstring top, and front zipper pouch.',
-  },
-  // More products...
-];
 
 export default function Cart({ cart }: { cart: SafeCart }) {
   const { isOpen, close } = useCartModal();
 
-  // useEffect(() => {
-  //   getCartWithItems().then((cart) => {
-  //     setCart(cart);
-  //   }).catch((error) => {
-  //     console.error(error);
-  //     toast.error('Failed to load cart');
-  //   });
-  // }, []);
+  const total = cart.items.reduce((acc, item) => item.product.price * item.quantity + acc, 0);
+  async function handleCheckout() {
+    const { url } = await createCheckoutSession(total);
+    window.location.assign(url as string);
+  }
 
   return (
     <Dialog open={isOpen} onClose={close} className="relative z-10">
@@ -100,7 +74,15 @@ export default function Cart({ cart }: { cart: SafeCart }) {
                                 <p className="text-gray-500">Qty {cartItem.quantity}</p>
 
                                 <div className="flex">
-                                  <button type="button" className="font-medium text-indigo-600 hover:text-indigo-500">
+                                  <button
+                                    onClick={() =>
+                                      removeFromCart({
+                                        cartItemId: cartItem.id,
+                                      })
+                                    }
+                                    type="button"
+                                    className="font-medium text-indigo-600 hover:text-indigo-500"
+                                  >
                                     Remove
                                   </button>
                                 </div>
@@ -116,16 +98,16 @@ export default function Cart({ cart }: { cart: SafeCart }) {
                 <div className="border-t border-gray-200 px-4 py-6 sm:px-6">
                   <div className="flex justify-between text-base font-medium text-gray-900">
                     <p>Subtotal</p>
-                    <p>$262.00</p>
+                    <p>${total}</p>
                   </div>
                   <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes calculated at checkout.</p>
                   <div className="mt-6">
-                    <a
-                      href="#"
+                    <button
+                      onClick={handleCheckout}
                       className="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
                     >
                       Checkout
-                    </a>
+                    </button>
                   </div>
                   <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
                     <p>

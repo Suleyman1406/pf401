@@ -29,6 +29,7 @@ model User {
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   cart       Cart?
+  orders     Order[]
 }
 
 model Product {
@@ -42,7 +43,8 @@ model Product {
   category    Category @relation(fields: [categoryId], references: [id])
   categoryId  String
 
-  cartItems CartItem[]
+  cartItems  CartItem[]
+  orderItems OrderItem[]
 }
 
 model Category {
@@ -70,4 +72,23 @@ model Cart {
   userId String @unique
 
   items CartItem[]
+}
+
+model OrderItem {
+  id        String  @id @default(cuid())
+  product   Product @relation(fields: [productId], references: [id])
+  productId String
+  quantity  Int
+  order     Order   @relation(fields: [orderId], references: [id])
+  orderId   String
+}
+
+model Order {
+  id        String      @id @default(cuid())
+  user      User        @relation(fields: [userId], references: [id])
+  userId    String
+  total     Float
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  items     OrderItem[]
 }
