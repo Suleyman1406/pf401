@@ -1,12 +1,12 @@
 const productRoutes = require("./routes/products");
+const categoryRoutes = require("./routes/categories");
+const { PORT } = require("./constants");
+const mongoose = require("mongoose");
 const express = require("express");
 const path = require("path");
 const app = express();
 
-const PORT = 3000;
-
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
 app.use("/public", express.static(path.join(__dirname, "public")));
 
 app.get("/", (req, res) => {
@@ -14,7 +14,17 @@ app.get("/", (req, res) => {
 });
 
 app.use("/api/products", productRoutes);
+app.use("/api/categories", categoryRoutes);
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on PORT ${PORT}`);
+  console.log(`Products app listening on PORT ${PORT}`);
 });
+
+mongoose
+  .connect("")
+  .then(() => {
+    console.log("DB connected");
+  })
+  .catch((err) => {
+    console.log("error", err);
+  });
