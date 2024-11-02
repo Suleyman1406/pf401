@@ -11,7 +11,7 @@ export const Search = () => {
       />
       <input
         placeholder="Search something here"
-        className="w-full border border-[#c3d4e966] rounded-[70px] py-[11px] pl-12 lg:pl-16 pr-11 placeholder:text-secondary-400 text-sm font-medium leading-[20px] tracking-[-0.28px]"
+        className="w-full border border-[#c3d4e966] rounded-[70px] py-[11px] pl-12 lg:pl-16 pr-11 placeholder:text-secondary text-sm font-medium leading-[20px] tracking-[-0.28px]"
       />
       <img
         src={FilterIcon}
