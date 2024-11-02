@@ -1,17 +1,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
+    --background: 220 20% 97%;
     --foreground: 224 71.4% 4.1%;
     --card: 0 0% 100%;
     --card-foreground: 224 71.4% 4.1%;
     --popover: 0 0% 100%;
     --popover-foreground: 224 71.4% 4.1%;
     --primary: 220.9 39.3% 11%;
+    --primary-500: 225 80% 56%;
     --primary-foreground: 210 20% 98%;
     --secondary: 220 14.3% 95.9%;
+    --secondary-400: 218 18% 43%;
     --secondary-foreground: 220.9 39.3% 11%;
     --muted: 220 14.3% 95.9%;
     --muted-foreground: 220 8.9% 46.1%;
@@ -27,7 +30,7 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
   .dark {
     --background: 224 71.4% 4.1%;
@@ -53,7 +56,21 @@
     --chart-2: 160 60% 45%;
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%
+    --chart-5: 340 75% 55%;
+  }
+  @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("/fonts/PlusJakartaSans.ttf") format("truetype");
+    font-weight: 200 800;
+    font-display: swap;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: "Plus Jakarta Sans";
+    src: url("/fonts/PlusJakartaSans-Italic.ttf") format("truetype");
+    font-weight: 200 800;
+    font-display: swap;
+    font-style: italic;
   }
 }
 @layer base {
