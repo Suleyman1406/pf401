@@ -1,3 +1,7 @@
 import { createRoot } from "react-dom/client";
 
-createRoot(document.getElementById("root")!).render(<div>Hello World!</div>);
+import "./style/global.css";
+
+createRoot(document.getElementById("root")!).render(
+  <div className="text-rose-400">Hello World!</div>
+);
