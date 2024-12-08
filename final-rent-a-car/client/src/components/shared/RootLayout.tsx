@@ -5,6 +5,7 @@ import { Navbar } from "./navbar";
 import { getCurrentUserAsync } from "@/store/features/userSlice";
 import { useAppDispatch } from "@/hooks/redux";
 import { Dialogs } from "./dialogs";
+import { HelpPopover } from "./help-popover";
 
 const RootLayout = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +19,7 @@ const RootLayout = () => {
       <Navbar />
       <Outlet />
       <Dialogs />
+      <HelpPopover />
     </div>
   );
 };

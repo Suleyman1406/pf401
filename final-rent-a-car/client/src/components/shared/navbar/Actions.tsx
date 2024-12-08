@@ -66,7 +66,7 @@ export const NavbarActions = () => {
               <Link to="/profile">Profile</Link>
             </DropdownMenuItem>
             <DropdownMenuItem>
-              <Link to="/settings">Reservations</Link>
+              <Link to="/reservations">Reservations</Link>
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>
               <LogOutIcon />

@@ -39,7 +39,7 @@ export const Filters = () => {
   const filters: Filters = useMemo(
     () => [
       {
-        label: "Type",
+        label: "Category",
         options: categoryOptions,
       },
       {
@@ -95,14 +95,14 @@ export const Filters = () => {
 
   function handleRangeChange(min: number, max: number) {
     if (min === 0) {
-      searchParams.delete("minPrice");
+      searchParams.delete("min_price");
     } else {
-      searchParams.set("minPrice", String(min));
+      searchParams.set("min_price", String(min));
     }
     if (max === 1000) {
-      searchParams.delete("maxPrice");
+      searchParams.delete("max_price");
     } else {
-      searchParams.set("maxPrice", String(max));
+      searchParams.set("max_price", String(max));
     }
     setSearcParams(searchParams);
   }
@@ -130,6 +130,9 @@ export const Filters = () => {
                     <Checkbox
                       id={`${filter.label}-${option.value}`}
                       onClick={() => handleChange(filter.label, option.value)}
+                      defaultChecked={searchParams
+                        .getAll(filter.label.toLowerCase())
+                        .includes(option.value)}
                       className="h-5 w-5"
                     />
                     <label

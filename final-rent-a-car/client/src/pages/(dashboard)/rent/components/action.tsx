@@ -45,12 +45,11 @@ const getFormSchema = (isEdit: boolean) =>
         required_error: "Price is required",
       })
       .positive(),
-    discount: z
-      .number({
-        invalid_type_error: "Discount must be a number",
-        required_error: "Discount is required",
-      })
-      .positive(),
+    discount: z.number({
+      invalid_type_error: "Discount must be a number",
+      required_error: "Discount is required",
+    }),
+
     categoryId: z.string().min(2, { message: "Category is required" }),
     fuel: z
       .number({
@@ -204,7 +203,7 @@ const ActionForm = ({ type }: Props) => {
   }
 
   return (
-    <div>
+    <div className="pt-6">
       <h1 className="text-2xl font-bold text-primary mb-4">Create Rent</h1>
 
       <Form {...form}>

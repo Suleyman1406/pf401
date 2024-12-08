@@ -1,4 +1,10 @@
-import { Calendar, CarIcon, Home, Inbox, Search, Settings } from "lucide-react";
+import {
+  CalendarIcon,
+  CarIcon,
+  Home,
+  MessageCircleIcon,
+  MessageSquareMoreIcon,
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -21,6 +27,21 @@ const items = [
     title: "Car Rents",
     url: paths.DASHBOARD.RENTS.LIST,
     icon: CarIcon,
+  },
+  {
+    title: "Reservations",
+    url: paths.DASHBOARD.RESERVATIONS.LIST,
+    icon: CalendarIcon,
+  },
+  {
+    title: "Reviews",
+    url: paths.DASHBOARD.REVIEWS.LIST,
+    icon: MessageSquareMoreIcon,
+  },
+  {
+    title: "Chat",
+    url: paths.DASHBOARD.CHAT,
+    icon: MessageCircleIcon,
   },
 ];
 export const DashboardSidebar = () => {

@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import Rent from "../mongoose/schemas/rent";
 import Category from "../mongoose/schemas/category";
+import Review from "../mongoose/schemas/review";
 
 const getAll = async (req: Request, res: Response) => {
   try {
@@ -19,17 +20,18 @@ const getAll = async (req: Request, res: Response) => {
 
     const filter: Record<string, any> = {
       $and: [],
+      $or: [],
     };
 
-    if (type === "recommendation") {
+    if (type === "recommended") {
       filter.showInRecommendation = true;
     }
 
     if (search) {
-      filter.OR = [
+      filter.$or.push(
         { name: { $regex: new RegExp(search, "i") } },
-        { description: { $regex: new RegExp(search, "i") } },
-      ];
+        { description: { $regex: new RegExp(search, "i") } }
+      );
     }
 
     if (capacity) {
@@ -56,16 +58,16 @@ const getAll = async (req: Request, res: Response) => {
 
     if (dropoff_location) {
       filter.dropOffLocations = {
-        $elemMatch: {
-          location: pickup_location,
-        },
+        $in: [dropoff_location],
       };
     }
 
     const items = await Rent.find(filter)
-      .skip(skip)
-      .limit(take)
+      .skip(+skip)
+      .limit(+take)
       .populate(["category", "pickUpLocation", "dropOffLocations"]);
+
+    const total = await Rent.countDocuments(filter);
 
     items.forEach((item) => {
       item.images = item.images.map(
@@ -75,6 +77,9 @@ const getAll = async (req: Request, res: Response) => {
     res.json({
       message: "success",
       items,
+      total,
+      take: +take,
+      skip: +skip,
     });
   } catch (err) {
     console.log(err);
@@ -101,13 +106,21 @@ const getById = async (req: Request, res: Response) => {
       return;
     }
 
+    const reviews = await Review.find({
+      rent: id,
+      status: "approved",
+    }).populate("author", "name surname");
+
     rent.images = rent.images.map(
       (image) => `${process.env.BASE_URL}/public/rent/${image}`
     );
 
     res.json({
       message: "success",
-      item: rent,
+      item: {
+        ...rent.toObject(),
+        reviews,
+      },
     });
   } catch (err) {
     console.log(err);
@@ -131,6 +144,7 @@ const create = async (req: Request, res: Response) => {
       price,
       currency,
       discount,
+      showInRecommendation = false,
     } = req.matchedData;
 
     const category = await Category.findById(categoryId);
@@ -157,6 +171,7 @@ const create = async (req: Request, res: Response) => {
       currency,
       discount,
       images,
+      showInRecommendation,
     });
     await rent.save();
 
@@ -227,6 +242,8 @@ const edit = async (req: Request, res: Response) => {
     rent.price = data.price;
     rent.discount = data.discount;
     if (data.images) rent.images = data.images;
+    if (data.showInRecommendation !== undefined)
+      rent.showInRecommendation = data.showInRecommendation;
 
     await rent.save();
 

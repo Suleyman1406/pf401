@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import Reservation from "../mongoose/schemas/reservation";
 import Rent from "../mongoose/schemas/rent";
 import { calculateDateDifference } from "../utils/date";
+import { Rent as TRent } from "../types/schema";
 
 const getAll = async (req: Request, res: Response) => {
   try {
@@ -11,7 +12,19 @@ const getAll = async (req: Request, res: Response) => {
       filter.user = user?._id.toString() ?? "";
     }
 
-    const reservations = await Reservation.find(filter);
+    const reservations = await Reservation.find(filter)
+      .populate("rent", "images price currency name description")
+      .populate("dropOffLocation")
+      .populate("pickUpLocation");
+
+    reservations.forEach((reservation) => {
+      (reservation.rent as TRent).images = (
+        reservation.rent as TRent
+      ).images.map((image) => {
+        if (image.includes(process.env.BASE_URL!)) return image;
+        return `${process.env.BASE_URL}/public/rent/${image}`;
+      });
+    });
 
     res.json({
       message: "Reservations fetched successfully",
@@ -25,7 +38,17 @@ const getAll = async (req: Request, res: Response) => {
 
 const create = async (req: Request, res: Response) => {
   try {
-    const { startDate, endDate, rentId } = req.matchedData;
+    const {
+      startDate,
+      endDate,
+      dropOffLocation,
+      pickUpLocation,
+      billingName,
+      billingAddress,
+      billingPhoneNumber,
+      billingTownCity,
+      rentId,
+    } = req.matchedData;
 
     const rent = await Rent.findById(rentId);
 
@@ -56,9 +79,17 @@ const create = async (req: Request, res: Response) => {
     const reservation = new Reservation({
       rent: rentId,
       user: req.user?._id,
+      pickUpLocation,
+      dropOffLocation,
       startDate,
       endDate,
       total,
+      billing: {
+        name: billingName,
+        address: billingAddress,
+        phoneNumber: billingPhoneNumber,
+        townCity: billingTownCity,
+      },
     });
     await reservation.save();
 

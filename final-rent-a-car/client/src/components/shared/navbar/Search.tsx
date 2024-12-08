@@ -5,21 +5,22 @@ import { paths } from "@/constants/paths";
 
 let timeoutId: NodeJS.Timeout;
 export const Search = () => {
-  const [searchParams, setSearcParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
   const navigate = useNavigate();
   const isListingPage = location.pathname.includes("list");
 
   function handleSearch(searchText: string) {
+    clearTimeout(timeoutId);
     if (!searchText) {
       searchParams.delete("search");
-      setSearcParams(searchParams);
+      setSearchParams(searchParams);
       return;
     }
-    clearTimeout(timeoutId);
+
     timeoutId = setTimeout(() => {
       searchParams.set("search", searchText);
-      setSearcParams(searchParams);
+      setSearchParams(searchParams);
       if (!isListingPage) navigate(paths.LIST + `?${searchParams.toString()}`);
     }, 300);
   }

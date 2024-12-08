@@ -12,6 +12,11 @@ import DashboardLayout from "@/components/shared/DashboardLayout";
 import DashboardRentListPage from "@/pages/(dashboard)/rent/list";
 import DashboardRentCreatePage from "@/pages/(dashboard)/rent/create";
 import DashboardRentEditPage from "@/pages/(dashboard)/rent/edit";
+import AuthLayout from "@/components/shared/AuthLayout";
+import ReservationsPage from "@/pages/(business)/reservations";
+import DashboardReservationListPage from "@/pages/(dashboard)/reservation/list";
+import DashboardReviewListPage from "@/pages/(dashboard)/review/list";
+import ChatPage from "@/pages/(dashboard)/chat";
 
 export const router = createBrowserRouter([
   {
@@ -31,8 +36,18 @@ export const router = createBrowserRouter([
         element: <RentDetailPage />,
       },
       {
-        path: paths.PAYMENT,
-        element: <PaymentPage />,
+        path: "",
+        element: <AuthLayout />,
+        children: [
+          {
+            path: paths.PAYMENT(),
+            element: <PaymentPage />,
+          },
+          {
+            path: paths.RESERVATIONS,
+            element: <ReservationsPage />,
+          },
+        ],
       },
 
       {
@@ -54,6 +69,18 @@ export const router = createBrowserRouter([
           {
             path: paths.DASHBOARD.RENTS.EDIT(),
             element: <DashboardRentEditPage />,
+          },
+          {
+            path: paths.DASHBOARD.RESERVATIONS.LIST,
+            element: <DashboardReservationListPage />,
+          },
+          {
+            path: paths.DASHBOARD.REVIEWS.LIST,
+            element: <DashboardReviewListPage />,
+          },
+          {
+            path: paths.DASHBOARD.CHAT,
+            element: <ChatPage />,
           },
         ],
       },
