@@ -1,24 +1,91 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { RenderIf } from "../RenderIf";
 import { User2Icon } from "lucide-react";
-import { useLocation } from "react-router-dom";
+import { useSocket } from "@/hooks/use-socket";
+import { useSelector } from "react-redux";
+import { selectUserData } from "@/store/features/userSlice";
+import { getUserId } from "@/lib/utils";
+import { Spinner } from "../Spinner";
+import { useQuery } from "@tanstack/react-query";
+import { QUERY_KEYS } from "@/constants/query-keys";
+import conversationService from "@/services/conversation";
+import { CreateConversation } from "./CreateConversation";
 
 export const HelpPopover = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
+  const [userId, setUserId] = useState("");
+  const { user, loading } = useSelector(selectUserData);
+  const socket = useSocket();
+  const inputRef = useRef<HTMLInputElement>(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const {
+    data: conversationData,
+    isLoading: conversationLoading,
+    status,
+  } = useQuery({
+    queryKey: [QUERY_KEYS.USER_CONVERSATION],
+    queryFn: () => conversationService.getByUserId({ userId }),
+    enabled: !!userId,
+  });
+  const [messages, setMessages] = useState<
+    { text: string; userId: string; createdAt: string }[]
+  >([]);
+
+  const isLoading = loading || conversationLoading;
+
   useEffect(() => {
     function handleOutsideClick() {
       setIsOpen(false);
     }
-
     window.addEventListener("click", handleOutsideClick);
 
     return () => window.removeEventListener("click", handleOutsideClick);
   }, []);
 
-  if (location.pathname.includes("dashboard")) {
-    return null;
-  }
+  useEffect(() => {
+    if (!socket) return;
+    socket.on("message", (message) => {
+      setMessages((prev) => [...prev, message]);
+    });
+  }, [socket]);
+
+  useEffect(() => {
+    if (!loading) {
+      setUserId(getUserId(user));
+    }
+  }, [loading]);
+
+  useEffect(() => {
+    if (status === "success" && conversationData) {
+      setMessages(conversationData.data?.item?.messages ?? []);
+    }
+  }, [status]);
+
+  useEffect(() => {
+    if (wrapperRef.current && isOpen) {
+      wrapperRef.current.scrollTo({
+        top: wrapperRef.current.scrollHeight,
+        behavior: "smooth",
+      });
+    }
+  }, [messages, isOpen]);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (!socket) return;
+    e.preventDefault();
+    const message = inputRef.current?.value.trim();
+    if (!message) return;
+    inputRef.current!.value = "";
+    socket.emit("message", {
+      message,
+      to: "67399e3e515fc0ef8074b52e",
+      from: userId,
+    });
+    setMessages((prev) => [
+      ...prev,
+      { text: message, userId, createdAt: new Date().toISOString() },
+    ]);
+  };
 
   return (
     <div onClick={(e) => e.stopPropagation()}>
@@ -62,51 +129,48 @@ export const HelpPopover = () => {
             <p className="text-sm text-[#6b7280] leading-3">Powered by PF401</p>
           </div>
 
-          <div
-            className="pr-4 h-[474px] overflow-y-auto"
-            style={{ minWidth: "100%" }}
-          >
-            <MessageItem
-              owner="Admin"
-              message="Hi, how can I help you today?"
-            />
-            <MessageItem
-              owner="You"
-              message="I have a question about my order"
-            />
-            <MessageItem
-              owner="Admin"
-              message="Sure, what's your order number?"
-            />
-            <MessageItem owner="You" message="123456" />
-            <MessageItem owner="Admin" message="Let me check that for you" />
-            <MessageItem
-              owner="Admin"
-              message="It looks like your order is on the way"
-            />
-            <MessageItem
-              owner="Admin"
-              message="Is there anything else I can help you with?"
-            />
-            <MessageItem owner="You" message="No, that's all. Thank you!" />
-            <MessageItem
-              owner="Admin"
-              message="You're welcome! Have a great day!"
-            />
-          </div>
+          <RenderIf condition={isLoading}>
+            <div className="flex justify-center items-center h-full w-full -translate-y-16">
+              <Spinner />
+            </div>
+          </RenderIf>
 
-          <div className="flex items-center pt-0">
-            <form className="flex items-center justify-center w-full space-x-2">
-              <input
-                className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
-                placeholder="Type your message"
-                value=""
-              />
-              <button className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-black hover:bg-[#111827E6] h-10 px-4 py-2">
-                Send
-              </button>
-            </form>
-          </div>
+          <RenderIf condition={!isLoading}>
+            <RenderIf condition={!conversationData}>
+              <CreateConversation />
+            </RenderIf>
+
+            <RenderIf condition={!!conversationData}>
+              <div
+                ref={wrapperRef}
+                className="pr-4 h-[474px] overflow-y-auto"
+                style={{ minWidth: "100%" }}
+              >
+                {messages.map((message) => (
+                  <MessageItem
+                    owner={message.userId === userId ? "You" : "Admin"}
+                    message={message.text}
+                  />
+                ))}
+              </div>
+
+              <div className="flex items-center pt-0">
+                <form
+                  onSubmit={handleSubmit}
+                  className="flex items-center justify-center w-full space-x-2"
+                >
+                  <input
+                    ref={inputRef}
+                    className="flex h-10 w-full rounded-md border border-[#e5e7eb] px-3 py-2 text-sm placeholder-[#6b7280] focus:outline-none focus:ring-2 focus:ring-[#9ca3af] disabled:cursor-not-allowed disabled:opacity-50 text-[#030712] focus-visible:ring-offset-2"
+                    placeholder="Type your message"
+                  />
+                  <button className="inline-flex items-center justify-center rounded-md text-sm font-medium text-[#f9fafb] disabled:pointer-events-none disabled:opacity-50 bg-black hover:bg-[#111827E6] h-10 px-4 py-2">
+                    Send
+                  </button>
+                </form>
+              </div>
+            </RenderIf>
+          </RenderIf>
         </div>
       </RenderIf>
     </div>

@@ -73,6 +73,26 @@ export type Review = {
   _id: string;
 };
 
+export type Conversation = {
+  _id: string;
+  userName: string;
+  userEmail: string;
+  userId: string;
+  messages: Message[];
+  createdAt: string;
+  updatedAt: string;
+};
+
+export type Message = {
+  _id: string;
+  text: string;
+  userId: string;
+  userName: string;
+  conversation: string | Conversation;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type SelectOption = {
   value: string;
   label: string;

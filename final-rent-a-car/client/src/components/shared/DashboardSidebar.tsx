@@ -40,7 +40,7 @@ const items = [
   },
   {
     title: "Chat",
-    url: paths.DASHBOARD.CHAT,
+    url: paths.DASHBOARD.CHAT.VIEW,
     icon: MessageCircleIcon,
   },
 ];
